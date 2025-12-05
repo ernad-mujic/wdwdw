@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Security Toolkit - IP Lookup{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>IP Address Lookup</h1>
+    <p>Check if an IP address is associated with malicious activity.</p>
+    
+    <form method="POST" class="ip-form">
+        <div class="form-group">
+            <label for="ip_address">IP Address:</label>
+            <input type="text" id="ip_address" name="ip_address" required 
+                   placeholder="Enter an IP address (e.g., 8.8.8.8)" class="form-control">
+        </div>
+        
+        <button type="submit" class="btn">Check IP</button>
+    </form>
+    
+    {% if result %}
+    <div class="result-card {% if result.is_malicious %}malicious{% else %}safe{% endif %}">
+        <h2>Results for {{ result.ip }}</h2>
+        
+        <div class="result-details">
+            <p><strong>Country:</strong> {{ result.country_name }} ({{ result.country_code }})</p>
+            <p><strong>ISP:</strong> {{ result.isp }}</p>
+            <p><strong>Domain:</strong> {{ result.domain }}</p>
+            <p><strong>Usage Type:</strong> {{ result.usage_type }}</p>
+            
+            <div class="threat-score">
+                <h3>Threat Score: {{ result.abuse_score }}%</h3>
+                <div class="progress-bar">
+                    <div class="progress" style="width: {{ result.abuse_score or 0 }}%;"></div>
+                </div>
+                <p class="score-label">
+                    {% if result.is_malicious %}
+                    ⚠️ This IP has been reported for malicious activity
+                    {% else %}
+                    ✅ This IP appears to be safe
+                    {% endif %}
+                </p>
+            </div>
+            
+            {% if result.reports > 0 %}
+            <div class="report-info">
+                <p><strong>Reports:</strong> {{ result.reports }}</p>
+                <p><strong>Last Reported:</strong> {{ result.last_reported }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if error %}
+    <div class="error-message">
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
