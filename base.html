@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Security Toolkit{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+
+            <ul>
+
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+
+                <li><a href="{{ url_for('qr_generator') }}">QR Code Generator</a></li>
+
+                <li><a href="{{ url_for('ip_lookup') }}">IP Lookup</a></li>
+
+                <li><a href="{{ url_for('email_lookup') }}">Email Breach Check</a></li>
+
+                <li><a href="{{ url_for('about') }}">About Me</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+   
+
+    <main>
+
+        {% block content %}{% endblock %}
+
+    </main>
+
+   
+
+    <footer>
+
+        <p>&copy; 2025 Security Toolkit</p>
+
+    </footer>
+
+   
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
