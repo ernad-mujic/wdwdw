@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+ 
+
+{% block title %}Security Toolkit - QR Code Generator{% endblock %}
+
+ 
+
+{% block content %}
+
+<div class="container">
+
+    <h1>QR Code Generator</h1>
+
+    <p>Enter text or a URL to generate a QR code.</p>
+
+ 
+
+    <form method="POST" class="qr-form">
+
+        <div class="form-group">
+
+            <label for="content">Content:</label>
+
+            <input type="text" id="content" name="content" required
+
+                   placeholder="Enter a URL or text" class="form-control">
+
+        </div>
+
+ 
+
+        <div class="form-group">
+
+            <label for="size">QR Size:</label>
+
+            <select id="size" name="size" class="form-control">
+
+                <option value="5">Small</option>
+
+                <option value="10" selected>Medium</option>
+
+                <option value="15">Large</option>
+
+            </select>
+
+        </div>
+
+ 
+
+        <button type="submit" class="btn">Generate QR Code</button>
+
+    </form>
+
+ 
+
+    {% if qr_code %}
+
+    <div class="qr-result">
+
+        <h2>Your QR Code:</h2>
+
+        <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+
+        <a href="data:image/png;base64,{{ qr_code }}" download="qrcode.png" class="btn">Download</a>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
