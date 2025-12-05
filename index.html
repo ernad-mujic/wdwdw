@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+ 
+
+{% block title %}Security Toolkit - Home{% endblock %}
+
+ 
+
+{% block content %}
+
+<div class="container">
+
+    <h1>Welcome to Security Toolkit</h1>
+
+    <p>A collection of security and utility tools built with Flask:</p>
+
+   
+
+    <div class="tools-grid">
+
+        <div class="tool-card">
+
+            <h2>QR Code Generator</h2>
+
+            <p>Generate QR codes for URLs, text, and more.</p>
+
+            <a href="{{ url_for('qr_generator') }}" class="btn">Try it</a>
+
+        </div>
+
+       
+
+        <div class="tool-card">
+
+            <h2>IP Lookup</h2>
+
+            <p>Check if an IP address is associated with malicious activity.</p>
+
+            <a href="{{ url_for('ip_lookup') }}" class="btn">Try it</a>
+
+        </div>
+
+       
+
+        <div class="tool-card">
+
+            <h2>Email Breach Check</h2>
+
+            <p>Check if your email has been involved in a data breach.</p>
+
+            <a href="{{ url_for('email_lookup') }}" class="btn">Try it</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
