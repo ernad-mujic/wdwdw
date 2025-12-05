@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Security Toolkit - About Me{% endblock %}
+
+{% block content %}
+<div class="container about-container">
+    <h1>About Me</h1>
+    
+    <div class="about-card">
+        <div class="profile-section">
+            <div class="profile-image">
+                <!-- Replace with your own image -->
+                <img src="{{ url_for('static', filename='images/mia.jpeg') }}" alt="Developer Profile">
+            </div>
+            
+            <div class="profile-info">
+                <h2>Ernad Mujic</h2>
+                <p class="title">Security Enthusiast & Web Developer</p>
+                <p class="contact">
+                    <a href="mailto:ermujic@utica.edu">mpaltamu@utica.edu</a>
+                </p>
+                <div class="social-links">
+                    <!-- Add your own social links here -->
+                    <a href="https://github.com/ernad-mujic" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://linkedin.com/in/ernadmujic" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-content">
+            <h3>About This Project</h3>
+            <p>
+                Security Toolkit is a Flask-based web application that provides various security and utility tools including
+                QR code generation, IP address reputation checking, and email breach detection.
+            </p>
+            <p>
+                This project was developed as part of a learning exercise to demonstrate Flask web application development
+                and the integration of various security APIs.
+            </p>
+            
+            <h3>My Background</h3>
+            <p>
+                <!-- Edit with your own information -->
+                I am a cybersecurity enthusiast and web developer with a passion for creating tools that help
+                people stay safe online. My background includes experience in using Bash, PowerShell, Python, SQL, and I'm
+                particularly interested in using Python.
+            </p>
+            
+            <h3>Skills & Technologies</h3>
+            <div class="skills-section">
+                <div class="skill-category">
+                    <h4>Programming Languages</h4>
+                    <ul>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>HTML/CSS</li>
+                        <!-- Add more languages -->
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Frameworks & Tools</h4>
+                    <ul>
+                        <li>Flask</li>
+                        <li>Git & GitHub</li>
+                        <li>RESTful APIs</li>
+                        <!-- Add more frameworks/tools -->
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Security Knowledge</h4>
+                    <ul>
+                        <li>Network Security</li>
+                        <li>Web Application Security</li>
+                        <li>Security Best Practices</li>
+                        <!-- Add more security skills -->
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Contact Me</h3>
+            <p>
+                Feel free to reach out if you have any questions about this project or if you'd like to collaborate
+                on future security-related projects.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
