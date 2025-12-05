@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Security Toolkit - Email Breach Check{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Email Breach Check</h1>
+    <p>Check if your email has been involved in known data breaches.</p>
+    
+    <div class="info-box">
+        <p><strong>Note:</strong> In a production environment, this would connect to the Have I Been Pwned API. 
+        For this exercise, we're using a simulated response for educational purposes.</p>
+    </div>
+    
+    <form method="POST" class="email-form">
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required 
+                   placeholder="Enter your email address" class="form-control">
+        </div>
+        
+        <button type="submit" class="btn">Check Email</button>
+    </form>
+    
+    {% if result %}
+    <div class="result-card {% if result.breached %}breached{% else %}safe{% endif %}">
+        <h2>Results for {{ result.email }}</h2>
+        
+        {% if result.breached %}
+        <div class="breach-alert">
+            <p>⚠️ This email appears in {{ result.breach_count }} data breach(es)!</p>
+        </div>
+        
+        <h3>Breach Details:</h3>
+        <div class="breach-list">
+            {% for breach in result.breaches %}
+            <div class="breach-item">
+                <h4>{{ breach.name }}</h4>
+                <p><strong>Date:</strong> {{ breach.date }}</p>
+                <p><strong>Data compromised:</strong> {{ breach.data_classes|join(', ') }}</p>
+                <p>{{ breach.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="advice-box">
+            <h3>What should you do?</h3>
+            <ul>
+                <li>Change your password for the affected services immediately</li>
+                <li>If you use the same password elsewhere, change those too</li>
+                <li>Enable two-factor authentication where available</li>
+                <li>Monitor your accounts for suspicious activity</li>
+            </ul>
+        </div>
+        {% else %}
+        <div class="safe-alert">
+            <p>✅ Good news! This email was not found in our database of known breaches.</p>
+            <p>However, this doesn't guarantee absolute security. Always maintain good security practices:</p>
+            <ul>
+                <li>Use strong, unique passwords for each site</li>
+                <li>Enable two-factor authentication where available</li>
+                <li>Regularly monitor your accounts</li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    {% if error %}
+    <div class="error-message">
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
